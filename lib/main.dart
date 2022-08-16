@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:scoreboard/widgets/cornometer.dart';
 import 'package:scoreboard/widgets/foult_count.dart';
 import 'package:scoreboard/widgets/score.dart';
@@ -32,6 +35,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  FocusNode _focusNode = FocusNode();
   _viewDesktop() {
     return Row(
       children: [
@@ -51,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Cornometer(),
+            Cornometer(controller: _cornoController),
             const SizedBox(
               height: 50,
             ),
@@ -107,13 +111,32 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  CornoController _cornoController = CornoController();
+
   _viewMobile() {
-    return const Center(
-      child: Cornometer(),
+    return Center(
+      child: Cornometer(controller: _cornoController),
     );
   }
 
   String? team1, team2;
+
+  @override
+  void initState() {
+    window.onKeyDown.listen((event) {
+      if (_cornoController.state == "play" && !(event.repeat ?? false)) {
+        _cornoController.pause();
+      }
+    });
+
+    window.onKeyUp.listen((event) {
+      if (_cornoController.state == "pause") {
+        _cornoController.play();
+      }
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
