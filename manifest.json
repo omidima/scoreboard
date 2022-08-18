@@ -1,6 +1,6 @@
 {
-    "name": "project_creator",
-    "short_name": "project_creator",
+    "name": "book",
+    "short_name": "book",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

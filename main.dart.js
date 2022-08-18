@@ -17468,12 +17468,13 @@ a1y:function a1y(a){this.a=a},
 a1z:function a1z(a){this.a=a},
 a1w:function a1w(){},
 a1D:function a1D(a){this.a=a},
-a1E:function a1E(a){this.a=a},
+a1E:function a1E(){},
 a1C:function a1C(a){this.a=a},
 nh:function nh(a,b){this.c=a
 this.a=b},
 Gx:function Gx(a){var _=this
-_.e=_.d=0
+_.d=20
+_.e=0
 _.a=_.f=null
 _.b=a
 _.c=null},
@@ -57593,7 +57594,7 @@ else o.push(A.aaq(B.Jk,new A.a1B(s)))
 return A.uX(A.b([q,A.na(o,B.b3,B.dU,B.aD),A.a9R(A.na(B.lW,B.b3,B.dU,B.aD))],p),B.aQ,B.aD)},
 aH(){var s=t.hG
 A.bj(window,"keydown",new A.a1D(this),!1,s)
-A.bj(window,"keyup",new A.a1E(this),!1,s)
+A.bj(window,"keyup",new A.a1E(),!1,s)
 this.b9()},
 K(a,b){return new A.uY(new A.C5(new A.a1C(this),null),null)}}
 A.a1B.prototype={
@@ -57631,16 +57632,15 @@ A.a1w.prototype={
 $0(){},
 $S:0}
 A.a1D.prototype={
-$1(a){var s,r=this.a.e
-if(r.a==="play"){s=a.repeat
+$1(a){var s,r=this.a.e,q=r.a
+if(q==="play"){s=a.repeat
 s=s!==!0}else s=!1
 if(s){r.a="pause"
+r.ad()}else if(q==="pause"){r.a="play"
 r.ad()}},
 $S:69}
 A.a1E.prototype={
-$1(a){var s=this.a.e
-if(s.a==="pause"){s.a="play"
-s.ad()}},
+$1(a){},
 $S:69}
 A.a1C.prototype={
 $2(a,b){if(b.b<500)return A.Nf(new A.nh(this.a.e,null),null,null)
@@ -57657,12 +57657,13 @@ if(s!=null)s.al(0)
 this.a.c.a="pause"},
 E0(){var s=this,r=s.f
 if(r!=null)r.al(0)
-s.e=s.d=0
+s.d=20
+s.e=0
 s.a.c.a="stop"
 s.aj(new A.a_q())},
-V_(){var s=this
-if(++s.e===60){++s.d
-s.e=0}s.aj(new A.a_o())},
+V_(){var s=this,r=--s.e
+if(r===0||r===-1){--s.d
+s.e=59}s.aj(new A.a_o())},
 BQ(a){if(a<10)return"0"+a
 return a},
 aH(){this.a.c.a6(0,new A.a_u(this))
