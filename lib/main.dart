@@ -126,11 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
     window.onKeyDown.listen((event) {
       if (_cornoController.state == "play" && !(event.repeat ?? false)) {
         _cornoController.pause();
-      }
-    });
-
-    window.onKeyUp.listen((event) {
-      if (_cornoController.state == "pause") {
+      }else if (_cornoController.state == "pause") {
         _cornoController.play();
       }
     });

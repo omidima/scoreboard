@@ -11,7 +11,7 @@ class Cornometer extends StatefulWidget {
 }
 
 class _CornometerState extends State<Cornometer> {
-  int min = 0;
+  int min = 20;
   int sec = 0;
   Timer? time;
 
@@ -31,17 +31,17 @@ class _CornometerState extends State<Cornometer> {
 
   _stop() {
     time?.cancel();
-    min = 0;
+    min = 20;
     sec = 0;
     widget.controller.state = "stop";
     setState(() {});
   }
 
   _handleTime() {
-    sec++;
-    if (sec == 60) {
-      min++;
-      sec = 0;
+    sec--;
+    if (sec == -1) {
+      min--;
+      sec = 59;
     }
     setState(() {});
   }
