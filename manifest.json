@@ -1,6 +1,6 @@
 {
-    "name": "book",
-    "short_name": "book",
+    "name": "instatools",
+    "short_name": "instatools",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
